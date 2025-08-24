@@ -20,7 +20,7 @@
 					<a class="btn btn-light" th:href="@{/}">Inicio</a>
 					<a class="btn btn-light" th:href="@{/allClientes}">Lista de clientes</a>
 					<a class="btn btn-light" th:href="@{/allVehiculos}">Lista de vehiculos</a>
-					<a class="btn btn-light" th:href="@{/createCliente}">Crear clientes</a>
+					<a class="btn btn-light" th:href="@{/allTurnos}">Lista de Turnos</a>
 				</div>
 			</nav>
 		</div>
@@ -39,28 +39,28 @@
 
 			<tbody>
 				<tr th:each="cliente : ${clientes}">
-					<td th:text="${cliente.id_cliente}"></td>
+					<td th:text="${cliente.idCliente}"></td>
 					<td th:text="${cliente.nombre}"></td>
 					<td th:text="${cliente.apellido}"></td>
 					<td>
 
-						<form th:action="@{/deleteCliente(idCliente=${cliente.id_cliente})}" method="post"
+						<form th:action="@{/deleteCliente(idCliente=${cliente.idCliente})}" method="post"
 							class="d-inline">
 							<button type="submit" class="btn btn-sm btn-danger"
-								th:onclick="'return confirm(\'¿Desea eliminar el cliente ' + ${cliente.id_cliente} + '?\')'">
+								th:onclick="'return confirm(\'¿Desea eliminar el cliente ' + ${cliente.idCliente} + '?\')'">
 								Eliminar
 							</button>
 						</form>
 
 						<form th:action="@{/vistaVehiculo}" method="get" class="d-inline ms-2">
-							<input type="hidden" name="idCliente" th:value="${cliente.id_cliente}">
+							<input type="hidden" name="idCliente" th:value="${cliente.idCliente}">
 							<button type="submit" class="btn btn-sm btn-primary">
 								Agregar vehículo
 							</button>
 						</form>
 
 						<form th:action="@{/allVehiculosCliente}" method="get" class="d-inline ms-2">
-							<input type="hidden" name="idCliente" th:value="${cliente.id_cliente}">
+							<input type="hidden" name="idCliente" th:value="${cliente.idCliente}">
 							<button type="submit" class="btn btn-sm btn-primary">
 								ver vehiculos
 							</button>
@@ -70,6 +70,10 @@
 				</tr>
 			</tbody>
 		</table>
+		
+		<a class="btn btn-light" th:href="@{/createCliente}">Crear clientes</a>
+
+		
 	</main>
 
 	<footer class="bg-light text-center py-3 mt-5">

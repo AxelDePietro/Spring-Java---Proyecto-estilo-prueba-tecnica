@@ -26,7 +26,7 @@ public class VehiculoService {
 		List<Vehiculo> vehiculosCliente = new ArrayList<>();
 
 		for (Vehiculo v : vehiculoRepository.findAll()) {
-			if (v.getCliente().getId_cliente() == idCliente) {
+			if (v.getCliente().getIdCliente() == idCliente) {
 				vehiculosCliente.add(v);
 			}
 		}

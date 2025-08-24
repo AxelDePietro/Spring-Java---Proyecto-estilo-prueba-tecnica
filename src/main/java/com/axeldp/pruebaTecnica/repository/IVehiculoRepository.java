@@ -12,7 +12,7 @@ import com.axeldp.pruebaTecnica.entity.Vehiculo;
 public interface IVehiculoRepository extends JpaRepository<Vehiculo, Integer>{
 
 	@Modifying
-	@Query("DELETE FROM Vehiculo v WHERE v.id_vehiculo = :idVehiculo AND v.cliente.id_cliente = :idCliente")
+	@Query("DELETE FROM Vehiculo v WHERE v.idVehiculo = :idVehiculo AND v.cliente.idCliente = :idCliente")
 	void deleteByIDandClienteID (@Param("idVehiculo") int idVehiculo, @Param("idCliente") int idCliente );
 	
 }

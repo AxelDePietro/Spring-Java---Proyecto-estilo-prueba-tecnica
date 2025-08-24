@@ -23,7 +23,7 @@ public class Vehiculo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_vehiculo;
+	private int idVehiculo;
 	
 	private String matricula;
 	

@@ -20,9 +20,9 @@ public class Turno {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_turno;
+	private int idTurno;
 	
-	private LocalDateTime fecha_hora;
+	private LocalDateTime fechaHora;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_vehiculo")
