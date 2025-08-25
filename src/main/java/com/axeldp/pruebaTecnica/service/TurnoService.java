@@ -28,8 +28,9 @@ public class TurnoService {
 	public Turno modificarTurno (Turno turno) {
 		Turno turnoMod = turnoRepository.findById(turno.getIdTurno()).get();
 		
-		turnoMod.setFechaHora(null);
-		turnoMod.setVehiculo(null);
+		turnoMod.setFecha(turno.getFecha());
+		turnoMod.setHora(turno.getHora());
+		turnoMod.setVehiculo(turno.getVehiculo());
 		
 		return turnoMod;
 		

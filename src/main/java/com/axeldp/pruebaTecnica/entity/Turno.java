@@ -1,6 +1,6 @@
 package com.axeldp.pruebaTecnica.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +22,9 @@ public class Turno {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTurno;
 	
-	private LocalDateTime fechaHora;
+	private LocalDate fecha;
+	
+	private int hora;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_vehiculo")

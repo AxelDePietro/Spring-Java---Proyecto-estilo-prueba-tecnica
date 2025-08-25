@@ -27,15 +27,28 @@
 	<main class="container">
 		<form th:action="@{/createTurno(idVehiculo=${idVehiculo})}" th:object="${turno}" method="post" class="mx-auto"
 			style="max-width: 500px;">
-			
+
 			<div class="mb-3">
-				<label for="fechaHora" class="form-label">Fecha y hora:</label>
-				<input type="datetime-local" id="fechaHora" name="fechaHora"
-					th:value="${#temporals.format(T(java.time.LocalDateTime).now(), 'yyyy-MM-dd''T''HH:mm')}"
+				<label for="fecha" class="form-label">Fecha:</label>
+				<input type="date" id="fecha" name="fecha"
+					th:value="${#temporals.format(T(java.time.LocalDate).now(), 'yyyy-MM-dd')}"
 					class="form-control" required />
 			</div>
 
-
+			<label for="hora" class="form-label">Hora:</label>
+			<select id="hora" name="hora">
+				<option value="8">8:00</option>
+				<option value="9">9:00</option>
+				<option value="10">10:00</option>
+				<option value="11">11:00</option>
+				<option value="12">12:00</option>
+				<option value="13">13:00</option>
+				<option value="14">14:00</option>
+				<option value="15">15:00</option>
+				<option value="16">16:00</option>
+				<option value="17">17:00</option>
+				<option value="18">18:00</option>
+			</select>
 
 			<div class="d-grid">
 				<button type="submit" class="btn btn-primary">Guardar Turno</button>
