@@ -60,5 +60,9 @@ public class VehiculoService {
 //		OPCION 3: QUERY DIRECTA 
 		vehiculoRepository.deleteByIDandClienteID(idVehiculo, idCliente);
 	}
+	
+	public void deleteVehiculo (int idVehiculo) {
+		vehiculoRepository.deleteById(idVehiculo);
+	}
 
 }

@@ -44,14 +44,6 @@
 					<td th:text="${cliente.apellido}"></td>
 					<td>
 
-						<form th:action="@{/deleteCliente(idCliente=${cliente.idCliente})}" method="post"
-							class="d-inline">
-							<button type="submit" class="btn btn-sm btn-danger"
-								th:onclick="'return confirm(\'¿Desea eliminar el cliente ' + ${cliente.idCliente} + '?\')'">
-								Eliminar
-							</button>
-						</form>
-
 						<form th:action="@{/vistaVehiculo}" method="get" class="d-inline ms-2">
 							<input type="hidden" name="idCliente" th:value="${cliente.idCliente}">
 							<button type="submit" class="btn btn-sm btn-primary">
@@ -66,14 +58,29 @@
 							</button>
 						</form>
 
+						<form th:action="@{/allTurnosCliente}" method="get" class="d-inline ms-2">
+							<input type="hidden" name="idCliente" th:value="${cliente.idCliente}">
+							<button type="submit" class="btn btn-sm btn-primary">
+								ver turnos
+							</button>
+						</form>
+						|
+						<form th:action="@{/deleteCliente(idCliente=${cliente.idCliente})}" method="post"
+							class="d-inline">
+							<button type="submit" class="btn btn-sm btn-danger"
+								th:onclick="'return confirm(\'¿Desea eliminar el cliente ' + ${cliente.idCliente} + '?\')'">
+								Eliminar
+							</button>
+						</form>
+
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		
+
 		<a class="btn btn-light" th:href="@{/createCliente}">Crear clientes</a>
 
-		
+
 	</main>
 
 	<footer class="bg-light text-center py-3 mt-5">

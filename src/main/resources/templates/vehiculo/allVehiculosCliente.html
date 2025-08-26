@@ -20,7 +20,7 @@
 					<a class="btn btn-light" th:href="@{/}">Inicio</a>
 					<a class="btn btn-light" th:href="@{/allClientes}">Lista de clientes</a>
 					<a class="btn btn-light" th:href="@{/allVehiculos}">Lista de vehiculos</a>
-					<a class="btn btn-light" th:href="@{/createCliente}">Crear clientes</a>
+					<a class="btn btn-light" th:href="@{/allTurnos}">Lista de Turnos</a>
 				</div>
 			</nav>
 		</div>
@@ -38,21 +38,23 @@
 			</thead>
 
 			<tbody>
-				<tr th:each="vehiculo : ${vehiculo}">
-					<td th:text="${vehiculo.id_vehiculo}"></td>
+				<tr th:each="vehiculo : ${vehiculos}">
+					<td th:text="${vehiculo.idVehiculo}"></td>
 					<td th:text="${vehiculo.matricula}"></td>
-					<td th:text="${vehiculo.cliente.id_cliente}"></td>
-					
+					<td th:text="${vehiculo.cliente.idCliente}"></td>
+
 					<td>
-						<form th:action="@{/deleteVehiculo(idCliente=${vehiculo.cliente.id_cliente}, idVehiculo=${vehiculo.id_vehiculo})}" method="post"
-							class="d-inline">
-							<button type="submit" class="btn btn-sm btn-danger"
-								th:onclick="'return confirm(\'¿Desea eliminar el vehiculo ' + ${vehiculo.id_vehiculo} + '?\')'">
-								Eliminar
-							</button>
+						<form th:action="@{/createTurno}" method="get" class="d-inline ms-2">
+							<input type="hidden" name="idVehiculo" th:value="${vehiculo.idVehiculo}">
+							<button type="submit" class="btn btn-sm btn-primary"> crear Turno </button>
 						</form>
+
+						<form th:action="@{/deleteVehiculo(idVehiculo=${vehiculo.idVehiculo})}" method="post" class="d-inline ms-2">
+							<button type="submit" class="btn btn-sm btn-primary"> eliminar Vehiculo </button>
+						</form>
+
 					</td>
-					
+
 				</tr>
 			</tbody>
 		</table>

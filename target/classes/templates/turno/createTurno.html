@@ -28,11 +28,21 @@
 		<form th:action="@{/createTurno(idVehiculo=${idVehiculo})}" th:object="${turno}" method="post" class="mx-auto"
 			style="max-width: 500px;">
 
-			<div class="mb-3">
-				<label for="fecha" class="form-label">Fecha:</label>
-				<input type="date" id="fecha" name="fecha"
-					th:value="${#temporals.format(T(java.time.LocalDate).now(), 'yyyy-MM-dd')}"
-					class="form-control" required />
+			<div class="mb-3 d-flex gap-3">
+				<label for="dia" class="form-label">Dia:</label>
+				<input type="number" id="dia" name="dia"
+					th:value="${T(java.time.LocalDate).now().getDayOfMonth()}" class="form-control"
+					required />
+
+				<label for="mes" class="form-label">Mes:</label>
+				<input type="number" id="mes" name="mes"
+					th:value="${T(java.time.LocalDate).now().getMonthValue()}" class="form-control"
+					required />
+
+				<label for="anio" class="form-label">Año:</label>
+				<input type="number" id="anio" name="anio"
+					th:value="${T(java.time.LocalDate).now().getYear()}" class="form-control"
+					required />
 			</div>
 
 			<label for="hora" class="form-label">Hora:</label>

@@ -37,8 +37,8 @@ public class VehiculoController {
 
 		vehiculoService.crearVehiculo(vehiculoFinal);
 
-		ModelAndView mav = new ModelAndView("vehiculo/allVehiculosCliente");
-		mav.addObject("vehiculo", vehiculoService.vehiculosPorCliente(idCliente));
+		ModelAndView mav = new ModelAndView("vehiculo/allVehiculos");
+		mav.addObject("vehiculos", vehiculoService.allVehiculos());
 		return mav;
 
 	}
@@ -56,17 +56,17 @@ public class VehiculoController {
 	public ModelAndView allVehiculos(@RequestParam int idCliente) {
 
 		ModelAndView mav = new ModelAndView("vehiculo/allVehiculosCliente");
-		mav.addObject("vehiculo", vehiculoService.vehiculosPorCliente(idCliente));
+		mav.addObject("vehiculos", vehiculoService.vehiculosPorCliente(idCliente));
 		return mav;
 	}
 	
 	@PostMapping("/deleteVehiculo")
-	public ModelAndView deleteVehiculo(@RequestParam int idCliente, @RequestParam int idVehiculo) {
+	public ModelAndView deleteVehiculo(@RequestParam int idVehiculo) {
 		
-		vehiculoService.deleteVehiculo(idCliente, idVehiculo);
+		vehiculoService.deleteVehiculo(idVehiculo);
 		
-		ModelAndView mav = new ModelAndView("vehiculo/allVehiculosCliente");
-		mav.addObject("vehiculo", vehiculoService.vehiculosPorCliente(idCliente));
+		ModelAndView mav = new ModelAndView("vehiculo/allVehiculos");
+		mav.addObject("vehiculos", vehiculoService.allVehiculos());
 		return mav;
 	}
 

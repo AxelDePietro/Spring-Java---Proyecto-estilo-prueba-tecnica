@@ -14,7 +14,7 @@
 	<header class="bg-primary text-white p-3 mb-4">
 		<!--    <div class="container">-->
 		<div class="container d-flex justify-content-between align-items-center">
-			<h1 class="h3 mb-0">Lista de vehiculos por cliente</h1>
+			<h1 class="h3 mb-0">Lista de vehiculos</h1>
 			<nav>
 				<div class="btn-group" role="group" aria-label="Navegación principal">
 					<a class="btn btn-light" th:href="@{/}">Inicio</a>
@@ -48,6 +48,18 @@
 							<input type="hidden" name="idVehiculo" th:value="${vehiculo.idVehiculo}">
 							<button type="submit" class="btn btn-sm btn-primary"> crear Turno </button>
 						</form>
+						
+						<form th:action="@{/allTurnosVehiculo}" method="get" class="d-inline ms-2">
+							<input type="hidden" name="idVehiculo" th:value="${vehiculo.idVehiculo}">
+							<button type="submit" class="btn btn-sm btn-primary">
+								ver turnos
+							</button>
+						</form>
+						|
+						<form th:action="@{/deleteVehiculo(idVehiculo=${vehiculo.idVehiculo})}" method="post" class="d-inline">
+							<button type="submit" class="btn btn-sm btn-danger"> eliminar </button>
+						</form>
+
 					</td>
 
 				</tr>

@@ -21,8 +21,7 @@ public class TurnoController {
 	//vista crear
 	@GetMapping("/createTurno")
 	public ModelAndView viewCreateTurno(@RequestParam int idVehiculo) {	
-	
-
+		
 		ModelAndView mav = new ModelAndView("turno/createTurno");
 		mav.addObject("idVehiculo", idVehiculo);
 		mav.addObject("turno", new Turno());
@@ -52,7 +51,7 @@ public class TurnoController {
 	@GetMapping("/allTurnosVehiculo")
 	public ModelAndView allTurnosVehiculo(@RequestParam int idVehiculo) {
 
-		ModelAndView mav = new ModelAndView("turno/allturnos");
+		ModelAndView mav = new ModelAndView("turno/allTurnos");
 		mav.addObject("turnos", turnoService.allTurnosByVehiculo(idVehiculo));
 		return mav;
 	}
@@ -60,7 +59,7 @@ public class TurnoController {
 	@GetMapping("/allTurnosCliente")
 	public ModelAndView allTurnosCliente(@RequestParam int idCliente) {
 
-		ModelAndView mav = new ModelAndView("turno/allturnos");
+		ModelAndView mav = new ModelAndView("turno/allTurnosCliente");
 		mav.addObject("turnos", turnoService.allTurnosByCliente(idCliente));
 		return mav;
 	}
@@ -72,7 +71,7 @@ public class TurnoController {
 
 		turnoService.deleteTurno(idTurno);
 		
-		ModelAndView mav = new ModelAndView("turno/allturnos");
+		ModelAndView mav = new ModelAndView("turno/allTurnosVehiculo");
 		mav.addObject("turnos", turnoService.allTurnos());
 		return mav;
 	}
