@@ -28,7 +28,7 @@ public class Vehiculo {
 	private String matricula;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_cliente")
+	@JoinColumn(name = "fk_cliente")
 	private Cliente cliente;
 	
 	@OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL,orphanRemoval = true)

@@ -14,7 +14,7 @@
 	<header class="bg-primary text-white p-3 mb-4">
 		<!--    <div class="container">-->
 		<div class="container d-flex justify-content-between align-items-center">
-			<h1 class="h3 mb-0">Lista de clientes</h1>
+			<h1 class="h3 mb-0">Lista de Turnos</h1>
 			<nav>
 				<div class="btn-group" role="group" aria-label="Navegación principal">
 					<a class="btn btn-light" th:href="@{/}">Inicio</a>
@@ -34,18 +34,63 @@
 				<div class="card shadow-sm h-100">
 					<div class="card-body">
 						<h5 class="card-title">Turno #<span th:text="${turno.idTurno}"></span></h5>
+
 						<p class="card-text mb-1">
 							<strong>Fecha:</strong>
 							<span th:text="${turno.fecha}"></span>
 						</p>
+
 						<p class="card-text mb-1">
 							<strong>Hora:</strong>
 							<span th:text="${turno.hora}"></span>
 						</p>
+
 						<p class="card-text">
 							<strong>Vehículo:</strong>
 							<span th:text="${turno.vehiculo.idVehiculo}"></span>
 						</p>
+
+						<p th:if="${turno.tipo != T(com.axeldp.pruebaTecnica.entity.enums.Tipo).NO }" class="card-text">
+							<strong>Lavado:</strong>
+							<span th:text="${turno.tipo}"></span>
+						</p>
+
+						<div th:if="${turno.alineacionBalanceo and turno.cambioCubiertas }">
+							<p class="card-text">
+								<strong>Alineacion y balanceo:</strong>
+								<span th:text="${turno.alineacionBalanceo}"></span>
+							</p>
+							<p class="card-text">
+								<strong>Cambio de cubiertas:</strong>
+								<span th:text="${turno.cambioCubiertas}"></span>
+							</p>
+						</div>
+
+<!--						<div th:if="${turno.alineacionBalanceo or turno.cambioCubiertas}">-->
+<!--							<p th:if="${turno.alineacionBalanceo}">-->
+<!--								<strong>Alineación y balanceo:</strong> Sí-->
+<!--							</p>-->
+<!--							<p th:if="${turno.cambioCubiertas}">-->
+<!--								<strong>Cambio de cubiertas:</strong> Sí-->
+<!--							</p>-->
+<!--						</div>-->
+
+<!--						<div th:if="${not turno.alineacionBalanceo and not turno.cambioCubiertas}">-->
+<!--							<p>-->
+<!--								Sin servicios de alineación, balanceo o cambio de cubiertas-->
+<!--							</p>-->
+<!--						</div>-->
+
+
+						<p th:if="${turno.motor != T(com.axeldp.pruebaTecnica.entity.enums.Motor).NO 
+							&& turno.rendimiento != T(com.axeldp.pruebaTecnica.entity.enums.Rendimiento).NO}" class="card-text">
+							<strong>motor:</strong>
+							<span th:text="${turno.motor}"></span>
+							<strong>rendimiento:</strong>
+							<span th:text="${turno.rendimiento}"></span>
+						</p>
+
+						<h1 th:text="${turno.precio}"></h1>
 
 						<form th:action="@{/deleteTurno(idTurno=${turno.idTurno})}" method="post" class="d-inline">
 							<button type="submit" class="btn btn-sm btn-danger"

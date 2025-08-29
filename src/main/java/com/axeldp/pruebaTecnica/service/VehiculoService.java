@@ -22,7 +22,7 @@ public class VehiculoService {
 	}
 
 	public List<Vehiculo> vehiculosPorCliente(int idCliente) {
-
+		
 		List<Vehiculo> vehiculosCliente = new ArrayList<>();
 
 		for (Vehiculo v : vehiculoRepository.findAll()) {

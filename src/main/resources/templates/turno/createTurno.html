@@ -24,47 +24,179 @@
 		</div>
 	</header>
 
+	<!--	<main class="container">-->
+	<!--		<form th:action="@{/createTurno(idVehiculo=${idVehiculo})}" th:object="${turno}" method="post" class="mx-auto"-->
+	<!--			style="max-width: 500px;">-->
+	<!--			<h4>Fecha y Hora</h4>-->
+	<!--			<div class="mb-3 d-flex gap-3">-->
+	<!--				<label for="dia" class="form-label">Dia:</label>-->
+	<!--				<input type="number" id="dia" name="dia" th:value="${T(java.time.LocalDate).now().getDayOfMonth()}"-->
+	<!--					class="form-control" required />-->
+
+	<!--				<label for="mes" class="form-label">Mes:</label>-->
+	<!--				<input type="number" id="mes" name="mes" th:value="${T(java.time.LocalDate).now().getMonthValue()}"-->
+	<!--					class="form-control" required />-->
+
+	<!--				<label for="anio" class="form-label">Año:</label>-->
+	<!--				<input type="number" id="anio" name="anio" th:value="${T(java.time.LocalDate).now().getYear()}"-->
+	<!--					class="form-control" required />-->
+	<!--			</div>-->
+
+	<!--			<label for="hora" class="form-label">Hora:</label>-->
+	<!--			<select id="hora" name="hora">-->
+	<!--				<option value="8">8:00</option>-->
+	<!--				<option value="9">9:00</option>-->
+	<!--				<option value="10">10:00</option>-->
+	<!--				<option value="11">11:00</option>-->
+	<!--				<option value="12">12:00</option>-->
+	<!--				<option value="13">13:00</option>-->
+	<!--				<option value="14">14:00</option>-->
+	<!--				<option value="15">15:00</option>-->
+	<!--				<option value="16">16:00</option>-->
+	<!--				<option value="17">17:00</option>-->
+	<!--				<option value="18">18:00</option>-->
+	<!--			</select>-->
+
+	<!--			<div>-->
+	<!--				<h4>Lavado</h4>-->
+	<!--				<label for="tipo" class="form-label">tipo:</label>-->
+	<!--				<select id="tipo" name="tipo">-->
+	<!--					<option value="NO">NO</option>-->
+	<!--					<option value="BASICO">BASICO</option>-->
+	<!--					<option value="COMPLETO">COMPLETO</option>-->
+	<!--					<option value="PREMIUM">PREMIUM</option>-->
+	<!--				</select>-->
+	<!--			</div>-->
+
+	<!--			<div>-->
+	<!--				<h4>Alineacion y Balanceo - Cambio de Cubiertas</h4>-->
+	<!--				<label>-->
+	<!--					<input type="checkbox" name="alineacionBalanceo" />-->
+	<!--					Alineacion y Balanceo-->
+	<!--				</label>-->
+
+	<!--				<label>-->
+	<!--					<input type="checkbox" name="cambioCubiertas" />-->
+	<!--					Cambio de cubiertas-->
+	<!--				</label>-->
+	<!--			</div>-->
+
+	<!--			<div>-->
+	<!--				<h4>Cambio de aceite y filtros</h4>-->
+	<!--				<label for="motor" class="form-label">motor:</label>-->
+	<!--				<select id="motor" name="motor">-->
+	<!--					<option value="DIESEL">DIESEL</option>-->
+	<!--					<option value="NAFTERO">NAFTERO</option>-->
+	<!--				</select>-->
+	<!--				<label for="rendimiento" class="form-label">rendimiento:</label>-->
+	<!--				<select id="rendimiento" name="rendimiento">-->
+	<!--					<option value="ALTO">ALTO</option>-->
+	<!--					<option value="BASICO">BASICO</option>-->
+	<!--				</select>-->
+
+	<!--			</div>-->
+
+	<!--			<div class="d-grid">-->
+	<!--				<button type="submit" class="btn btn-primary">Guardar Turno</button>-->
+	<!--			</div>-->
+	<!--		</form>-->
+	<!--	</main>-->
+
 	<main class="container">
 		<form th:action="@{/createTurno(idVehiculo=${idVehiculo})}" th:object="${turno}" method="post" class="mx-auto"
-			style="max-width: 500px;">
+			style="max-width: 700px;">
 
-			<div class="mb-3 d-flex gap-3">
-				<label for="dia" class="form-label">Dia:</label>
-				<input type="number" id="dia" name="dia"
-					th:value="${T(java.time.LocalDate).now().getDayOfMonth()}" class="form-control"
-					required />
+			<div class="card shadow-lg p-4 mb-4 rounded-3">
+				<h4 class="mb-3 text-primary">Fecha y Hora</h4>
+				<div class="row g-3 mb-3">
+					<div class="col-md-4">
+						<label for="dia" class="form-label">Día</label>
+						<input type="number" id="dia" name="dia"
+							th:value="${T(java.time.LocalDate).now().getDayOfMonth()}" class="form-control" required />
+					</div>
+					<div class="col-md-4">
+						<label for="mes" class="form-label">Mes</label>
+						<input type="number" id="mes" name="mes"
+							th:value="${T(java.time.LocalDate).now().getMonthValue()}" class="form-control" required />
+					</div>
+					<div class="col-md-4">
+						<label for="anio" class="form-label">Año</label>
+						<input type="number" id="anio" name="anio" th:value="${T(java.time.LocalDate).now().getYear()}"
+							class="form-control" required />
+					</div>
+				</div>
 
-				<label for="mes" class="form-label">Mes:</label>
-				<input type="number" id="mes" name="mes"
-					th:value="${T(java.time.LocalDate).now().getMonthValue()}" class="form-control"
-					required />
-
-				<label for="anio" class="form-label">Año:</label>
-				<input type="number" id="anio" name="anio"
-					th:value="${T(java.time.LocalDate).now().getYear()}" class="form-control"
-					required />
+				<div class="mb-3">
+					<label for="hora" class="form-label">Hora</label>
+					<select id="hora" name="hora" class="form-select">
+						<option value="8">08:00</option>
+						<option value="9">09:00</option>
+						<option value="10">10:00</option>
+						<option value="11">11:00</option>
+						<option value="12">12:00</option>
+						<option value="13">13:00</option>
+						<option value="14">14:00</option>
+						<option value="15">15:00</option>
+						<option value="16">16:00</option>
+						<option value="17">17:00</option>
+						<option value="18">18:00</option>
+					</select>
+				</div>
 			</div>
 
-			<label for="hora" class="form-label">Hora:</label>
-			<select id="hora" name="hora">
-				<option value="8">8:00</option>
-				<option value="9">9:00</option>
-				<option value="10">10:00</option>
-				<option value="11">11:00</option>
-				<option value="12">12:00</option>
-				<option value="13">13:00</option>
-				<option value="14">14:00</option>
-				<option value="15">15:00</option>
-				<option value="16">16:00</option>
-				<option value="17">17:00</option>
-				<option value="18">18:00</option>
-			</select>
+			<div class="card shadow-lg p-4 mb-4 rounded-3">
+				<h4 class="mb-3 text-primary">Lavado</h4>
+				<div class="mb-3">
+					<label for="tipo" class="form-label">Tipo</label>
+					<select id="tipo" name="tipo" class="form-select">
+						<option value="NO">NO</option>
+						<option value="BASICO">Básico</option>
+						<option value="COMPLETO">Completo</option>
+						<option value="PREMIUM">Premium</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="card shadow-lg p-4 mb-4 rounded-3">
+				<h4 class="mb-3 text-primary">Servicios adicionales</h4>
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="alineacionBalanceo" name="alineacionBalanceo" />
+					<label class="form-check-label" for="alineacionBalanceo">Alineación y Balanceo</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="cambioCubiertas" name="cambioCubiertas" />
+					<label class="form-check-label" for="cambioCubiertas">Cambio de cubiertas</label>
+				</div>
+			</div>
+
+			<div class="card shadow-lg p-4 mb-4 rounded-3">
+				<h4 class="mb-3 text-primary">Cambio de aceite y filtros</h4>
+				<div class="row g-3">
+					<div class="col-md-6">
+						<label for="motor" class="form-label">Motor</label>
+						<select id="motor" name="motor" class="form-select">
+							<option value="NO">No</option>
+							<option value="DIESEL">Diesel</option>
+							<option value="NAFTERO">Naftero</option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<label for="rendimiento" class="form-label">Rendimiento</label>
+						<select id="rendimiento" name="rendimiento" class="form-select">
+							<option value="NO">No</option>
+							<option value="ALTO">Alto</option>
+							<option value="BASICO">Básico</option>
+						</select>
+					</div>
+				</div>
+			</div>
 
 			<div class="d-grid">
-				<button type="submit" class="btn btn-primary">Guardar Turno</button>
+				<button type="submit" class="btn btn-success btn-lg">💾 Guardar Turno</button>
 			</div>
 		</form>
 	</main>
+
 
 	<footer class="bg-light text-center py-3 mt-5">
 		<p class="mb-0">api turnos automotor</p>

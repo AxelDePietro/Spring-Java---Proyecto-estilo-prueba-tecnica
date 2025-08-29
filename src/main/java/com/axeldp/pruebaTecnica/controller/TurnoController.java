@@ -51,7 +51,7 @@ public class TurnoController {
 	@GetMapping("/allTurnosVehiculo")
 	public ModelAndView allTurnosVehiculo(@RequestParam int idVehiculo) {
 
-		ModelAndView mav = new ModelAndView("turno/allTurnos");
+		ModelAndView mav = new ModelAndView("turno/allTurnosVehiculo");
 		mav.addObject("turnos", turnoService.allTurnosByVehiculo(idVehiculo));
 		return mav;
 	}

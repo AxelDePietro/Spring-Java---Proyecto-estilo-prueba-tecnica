@@ -26,6 +26,8 @@ public class Cliente {
 	private String nombre;
 	private String apellido;
 	
+	private boolean premium;
+	
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Vehiculo> vehiculos = new ArrayList<>();
 	

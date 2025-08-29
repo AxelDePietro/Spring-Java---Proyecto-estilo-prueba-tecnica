@@ -34,20 +34,50 @@
 				<div class="card shadow-sm h-100">
 					<div class="card-body">
 						<h5 class="card-title">Turno #<span th:text="${turno.idTurno}"></span></h5>
+						
 						<p class="card-text mb-1">
 							<strong>Fecha:</strong>
 							<span th:text="${turno.fecha}"></span>
 						</p>
+
 						<p class="card-text mb-1">
 							<strong>Hora:</strong>
 							<span th:text="${turno.hora}"></span>
 						</p>
+
 						<p class="card-text">
 							<strong>Vehículo:</strong>
 							<span th:text="${turno.vehiculo.idVehiculo}"></span>
 						</p>
 
-						<form th:action="@{/deleteTurno(idTurno=${turno.idTurno})}" method="post" class="btn btn-sm btn-danger">
+						<p th:if="${turno.tipo != T(com.axeldp.pruebaTecnica.entity.enums.Tipo).NO }" class="card-text">
+							<strong>Lavado:</strong>
+							<span th:text="${turno.tipo}"></span>
+						</p>
+
+						<div th:if="${turno.alineacionBalanceo and turno.cambioCubiertas }">
+							<p class="card-text">
+								<strong>Alineacion y balanceo:</strong>
+								<span th:text="${turno.alineacionBalanceo}"></span>
+							</p>
+							<p class="card-text">
+								<strong>Cambio de cubiertas:</strong>
+								<span th:text="${turno.cambioCubiertas}"></span>
+							</p>
+						</div>
+
+						<p th:if="${turno.motor != T(com.axeldp.pruebaTecnica.entity.enums.Motor).NO 
+													&& turno.rendimiento != T(com.axeldp.pruebaTecnica.entity.enums.Rendimiento).NO}" class="card-text">
+							<strong>motor:</strong>
+							<span th:text="${turno.motor}"></span>
+							<strong>rendimiento:</strong>
+							<span th:text="${turno.rendimiento}"></span>
+						</p>
+
+						<h1 th:text="${turno.precio}"></h1>
+
+						<form th:action="@{/deleteTurno(idTurno=${turno.idTurno})}" method="post"
+							class="btn btn-sm btn-danger">
 							<button type="submit" class="btn btn-sm btn-danger"
 								th:onclick="'return confirm(\'¿Desea eliminar el turno ' + ${turno.idTurno} + '?\')'">
 								Eliminar
