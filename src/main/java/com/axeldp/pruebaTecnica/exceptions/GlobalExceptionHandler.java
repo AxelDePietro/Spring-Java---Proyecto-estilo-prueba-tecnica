@@ -26,4 +26,26 @@ public class GlobalExceptionHandler {
 	
 	}
 	
+	@ExceptionHandler(HorarioNoDisponible.class)
+	public ModelAndView ManejarHorarioNoDisponible( HorarioNoDisponible ex) {
+		
+		ModelAndView mav = new ModelAndView("error/horarioNoDisponible");
+		mav.addObject("mensaje", ex.getMessage());
+		return mav;
+	}
+	
+	@ExceptionHandler(SinServicios.class)
+	public ModelAndView ManejarSinServicios(SinServicios ex) {
+		ModelAndView mav = new ModelAndView("error/sinServicios");
+		mav.addObject("mensaje", ex.getMessage());
+		return mav;
+	}
+	
+	@ExceptionHandler(DiaCompleto.class)
+	public ModelAndView ManejarDiaCompleto(DiaCompleto ex) {
+		ModelAndView mav = new ModelAndView("error/diaCompleto");
+		mav.addObject("mensaje", ex.getMessage());
+		return mav;
+	}
+	
 }

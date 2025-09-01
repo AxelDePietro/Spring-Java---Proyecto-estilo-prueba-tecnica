@@ -1,11 +1,17 @@
 package com.axeldp.pruebaTecnica.service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
 import com.axeldp.pruebaTecnica.entity.Turno;
-import com.axeldp.pruebaTecnica.exceptions.PatenteNoValida;
+import com.axeldp.pruebaTecnica.entity.enums.Motor;
+import com.axeldp.pruebaTecnica.entity.enums.Rendimiento;
+import com.axeldp.pruebaTecnica.entity.enums.Tipo;
+import com.axeldp.pruebaTecnica.exceptions.DiaCompleto;
+import com.axeldp.pruebaTecnica.exceptions.HorarioNoDisponible;
+import com.axeldp.pruebaTecnica.exceptions.SinServicios;
 import com.axeldp.pruebaTecnica.exceptions.VehiculoSinTurnos;
 import com.axeldp.pruebaTecnica.repository.ITurnoRepository;
 import com.axeldp.pruebaTecnica.repository.IVehiculoRepository;
@@ -50,6 +56,18 @@ public class TurnoService {
 		
 		turno.setPrecio(precio);
 		
+		if(verificarDia(turno.getFecha())) {
+			throw new DiaCompleto(turno.getFecha()); 
+		}
+		
+		if(verificarHora(turno)) {
+			throw new HorarioNoDisponible(turno.getHora());
+		}
+		
+		if(verificarSevicios(turno)) {
+			throw new SinServicios(turno.getIdTurno());
+		}
+		
 		return turnoRepository.save(turno);
 	}
 	
@@ -88,6 +106,39 @@ public class TurnoService {
 	//@Transactional
 	public void deleteTurno (int idTurno) {
 		turnoRepository.deleteById(idTurno);
+	}
+	
+	//comprobaciones
+	public boolean verificarHora(Turno turno) {
+		for(Turno t : turnoRepository.findAll()) {
+			if(t.getHora()==turno.getHora() && t.getFecha().equals(turno.getFecha())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean verificarSevicios(Turno turno) {
+		if(turno.getTipo()==Tipo.NO 
+				&& !turno.isAlineacionBalanceo() 
+				&& !turno.isCambioCubiertas() 
+				&& turno.getMotor()==Motor.NO 
+				&& turno.getRendimiento()==Rendimiento.NO) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean verificarDia(LocalDate fecha) {
+		
+		List<Integer> horas = new ArrayList<>();
+		
+		for(Turno t: turnoRepository.findByFecha(fecha)) {
+			if(t.getFecha().equals(fecha)) {
+				horas.add(t.getHora());
+			}
+		}
+		return horas.size()==11;
 	}
 	
 }

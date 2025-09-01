@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.axeldp.pruebaTecnica.entity.Turno;
+import java.time.LocalDate;
+
 
 @Repository
 public interface ITurnoRepository extends JpaRepository<Turno, Integer>{
@@ -25,5 +27,7 @@ public interface ITurnoRepository extends JpaRepository<Turno, Integer>{
 //	@Modifying
 //	@Query("DELETE FROM Turno t WHERE t.vehiculo.idVehiculo = :idVehiculo AND t.idTurno = :idTurno")
 //	public void deleteByIdTurnoANDIdVehiculo (@Param("idVehiculo") int idVehiculo, @Param("idTurno") int idTurno);
+	
+	public List<Turno> findByFecha(LocalDate fecha);
 	
 }
