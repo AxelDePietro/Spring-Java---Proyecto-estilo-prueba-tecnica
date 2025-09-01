@@ -29,12 +29,17 @@
 	<main class="container">
 		<h2 class="mb-4">Turnos</h2>
 
+		<div th:if="${#lists.isEmpty(turnos)}">
+			<h2>Este Vehiculo aun no posee turnos, intente cargar alguno</h2>
+			<a class="btn btn-light" th:href="@{/allVehiculos}">ir a Lista de vehiculos</a>
+		</div>
+
 		<div class="row row-cols-1 row-cols-md-3 g-4">
 			<div class="col" th:each="turno : ${turnos}">
 				<div class="card shadow-sm h-100">
 					<div class="card-body">
 						<h5 class="card-title">Turno #<span th:text="${turno.idTurno}"></span></h5>
-						
+
 						<p class="card-text mb-1">
 							<strong>Fecha:</strong>
 							<span th:text="${turno.fecha}"></span>

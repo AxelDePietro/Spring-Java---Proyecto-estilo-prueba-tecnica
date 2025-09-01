@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.axeldp.pruebaTecnica.entity.Turno;
+import com.axeldp.pruebaTecnica.exceptions.PatenteNoValida;
 import com.axeldp.pruebaTecnica.exceptions.VehiculoSinTurnos;
 import com.axeldp.pruebaTecnica.repository.ITurnoRepository;
 import com.axeldp.pruebaTecnica.repository.IVehiculoRepository;

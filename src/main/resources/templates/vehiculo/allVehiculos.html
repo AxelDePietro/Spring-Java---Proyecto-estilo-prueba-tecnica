@@ -41,7 +41,7 @@
 				<tr th:each="vehiculo : ${vehiculos}">
 					<td th:text="${vehiculo.idVehiculo}"></td>
 					<td th:text="${vehiculo.matricula}"></td>
-					<td th:text="${vehiculo.cliente.idCliente}"></td>
+					<td th:text="${vehiculo.cliente.nombre + ' ' + vehiculo.cliente.apellido + ' - id: ' + vehiculo.cliente.idCliente}"></td>
 
 					<td>
 						<form th:action="@{/createTurno}" method="get" class="d-inline ms-2">

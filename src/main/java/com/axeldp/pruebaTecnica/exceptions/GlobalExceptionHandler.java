@@ -17,5 +17,13 @@ public class GlobalExceptionHandler {
 		
 	}
 	
+	@ExceptionHandler(PatenteNoValida.class)
+	public ModelAndView ManejarPatenteNoValida( PatenteNoValida ex) {
+	
+		ModelAndView mav = new ModelAndView("error/patenteNoValida");
+		mav.addObject("mensaje", ex.getMessage());
+		return mav;
+	
+	}
 	
 }

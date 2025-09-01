@@ -29,6 +29,11 @@
 	<main class="container">
 		<h2 class="mb-4">Turnos</h2>
 
+		<div th:if="${#lists.isEmpty(turnos)}">
+			<h2> Aun no hay turnos, intente cargar alguno</h2>
+			<a class="btn btn-light" th:href="@{/allVehiculos}">ir a Lista de vehiculos</a>
+		</div>
+		
 		<div class="row row-cols-1 row-cols-md-3 g-4">
 			<div class="col" th:each="turno : ${turnos}">
 				<div class="card shadow-sm h-100">
@@ -65,23 +70,7 @@
 								<span th:text="${turno.cambioCubiertas}"></span>
 							</p>
 						</div>
-
-<!--						<div th:if="${turno.alineacionBalanceo or turno.cambioCubiertas}">-->
-<!--							<p th:if="${turno.alineacionBalanceo}">-->
-<!--								<strong>Alineación y balanceo:</strong> Sí-->
-<!--							</p>-->
-<!--							<p th:if="${turno.cambioCubiertas}">-->
-<!--								<strong>Cambio de cubiertas:</strong> Sí-->
-<!--							</p>-->
-<!--						</div>-->
-
-<!--						<div th:if="${not turno.alineacionBalanceo and not turno.cambioCubiertas}">-->
-<!--							<p>-->
-<!--								Sin servicios de alineación, balanceo o cambio de cubiertas-->
-<!--							</p>-->
-<!--						</div>-->
-
-
+						
 						<p th:if="${turno.motor != T(com.axeldp.pruebaTecnica.entity.enums.Motor).NO 
 							&& turno.rendimiento != T(com.axeldp.pruebaTecnica.entity.enums.Rendimiento).NO}" class="card-text">
 							<strong>motor:</strong>

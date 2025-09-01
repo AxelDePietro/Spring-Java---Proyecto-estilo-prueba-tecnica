@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.axeldp.pruebaTecnica.entity.Vehiculo;
+import com.axeldp.pruebaTecnica.exceptions.PatenteNoValida;
 import com.axeldp.pruebaTecnica.repository.IVehiculoRepository;
 
 import jakarta.transaction.Transactional;
@@ -18,6 +19,12 @@ public class VehiculoService {
 	private final IVehiculoRepository vehiculoRepository;
 
 	public Vehiculo crearVehiculo(Vehiculo vehiculo) {
+		
+		//equals para textos literales, matches para formatos/patron de expresion xD
+		if(!vehiculo.getMatricula().matches("^[A-Z]{3}[0-9]{3}$|^[A-Z]{2}[0-9]{3}[A-Z]{2}$")) {
+			throw new PatenteNoValida();
+		}
+		
 		return vehiculoRepository.save(vehiculo);
 	}
 

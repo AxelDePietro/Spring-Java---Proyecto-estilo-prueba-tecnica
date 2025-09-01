@@ -21,8 +21,8 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class Turno {
 
@@ -30,11 +30,7 @@ public class Turno {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTurno;
 
-	int dia = 25;
-	int mes = 8;
-	int anio = 2025;
-
-	LocalDate fecha = LocalDate.of(anio, mes, dia);
+	LocalDate fecha;
 
 	private int hora;
 
