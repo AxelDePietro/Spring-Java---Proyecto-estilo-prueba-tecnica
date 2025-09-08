@@ -48,4 +48,11 @@ public class GlobalExceptionHandler {
 		return mav;
 	}
 	
+	@ExceptionHandler(HoraNoPermitida.class)
+	public ModelAndView ManejarHoraNoPermitida(HoraNoPermitida ex) {
+		ModelAndView mav = new ModelAndView("error/horaNoPermitida");
+		mav.addObject("mensaje", ex.getMessage());
+		return mav;
+	}
+	
 }

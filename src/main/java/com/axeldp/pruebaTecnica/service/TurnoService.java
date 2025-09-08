@@ -1,20 +1,18 @@
 package com.axeldp.pruebaTecnica.service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
 import com.axeldp.pruebaTecnica.entity.Turno;
-import com.axeldp.pruebaTecnica.entity.enums.Motor;
-import com.axeldp.pruebaTecnica.entity.enums.Rendimiento;
-import com.axeldp.pruebaTecnica.entity.enums.Tipo;
 import com.axeldp.pruebaTecnica.exceptions.DiaCompleto;
+import com.axeldp.pruebaTecnica.exceptions.HoraNoPermitida;
 import com.axeldp.pruebaTecnica.exceptions.HorarioNoDisponible;
 import com.axeldp.pruebaTecnica.exceptions.SinServicios;
 import com.axeldp.pruebaTecnica.exceptions.VehiculoSinTurnos;
 import com.axeldp.pruebaTecnica.repository.ITurnoRepository;
 import com.axeldp.pruebaTecnica.repository.IVehiculoRepository;
+import com.axeldp.pruebaTecnica.serviceHelpers.TurnoHelper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,47 +22,27 @@ public class TurnoService {
 
 	private final ITurnoRepository turnoRepository;
 	private final IVehiculoRepository vehiculoRepository;
+	private final TurnoHelper helper;
 
 	// crear
 	public Turno crearTurno(Turno turno, int idVehiculo ) {
 		turno.setVehiculo(vehiculoRepository.findById(idVehiculo).get());
 		
-		int precio = 0;
+		helper.insertarPrecio(turno);
 		
-		switch(turno.getTipo()) {
-		case NO -> precio+=0;
-		case BASICO ->  precio+=10000;
-		case COMPLETO -> precio+=15000;
-		case PREMIUM -> precio+=20000;
-		}
-		
-		if(turno.isAlineacionBalanceo()) precio+=120000;
-		
-		if(turno.isCambioCubiertas()) precio+=50000;
-		
-		switch(turno.getMotor()) {
-		case NO -> precio+=0;
-		case DIESEL -> precio+=60000;
-		case NAFTERO -> precio+=50000;
-		}
-		
-		switch(turno.getRendimiento()) {
-		case NO -> precio+=0; 
-		case ALTO -> precio+=20000;
-		case BASICO -> precio+=10000;
-		}
-		
-		turno.setPrecio(precio);
-		
-		if(verificarDia(turno.getFecha())) {
+		if(helper.verificarDia(turno.getFecha())) {
 			throw new DiaCompleto(turno.getFecha()); 
 		}
 		
-		if(verificarHora(turno)) {
+		if(helper.verificarHora(turno)) {
 			throw new HorarioNoDisponible(turno.getHora());
 		}
 		
-		if(verificarSevicios(turno)) {
+		if(helper.verificarHoraPermitida(turno.getHora())) {
+			throw new HoraNoPermitida(turno.getHora());
+		}
+		
+		if(helper.verificarSevicios(turno)) {
 			throw new SinServicios(turno.getIdTurno());
 		}
 		
@@ -107,38 +85,5 @@ public class TurnoService {
 	public void deleteTurno (int idTurno) {
 		turnoRepository.deleteById(idTurno);
 	}
-	
-	//comprobaciones
-	public boolean verificarHora(Turno turno) {
-		for(Turno t : turnoRepository.findAll()) {
-			if(t.getHora()==turno.getHora() && t.getFecha().equals(turno.getFecha())) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public boolean verificarSevicios(Turno turno) {
-		if(turno.getTipo()==Tipo.NO 
-				&& !turno.isAlineacionBalanceo() 
-				&& !turno.isCambioCubiertas() 
-				&& turno.getMotor()==Motor.NO 
-				&& turno.getRendimiento()==Rendimiento.NO) {
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean verificarDia(LocalDate fecha) {
-		
-		List<Integer> horas = new ArrayList<>();
-		
-		for(Turno t: turnoRepository.findByFecha(fecha)) {
-			if(t.getFecha().equals(fecha)) {
-				horas.add(t.getHora());
-			}
-		}
-		return horas.size()==11;
-	}
-	
+
 }
