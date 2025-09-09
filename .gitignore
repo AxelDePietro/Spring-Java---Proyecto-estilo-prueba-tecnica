@@ -1,29 +1,59 @@
+# =========================
 # Compilados y empaquetados
+# =========================
 /target/
 *.class
 *.jar
 *.war
 *.ear
+/bin/
 
-# Logs
+# =========================
+# Logs y reportes
+# =========================
 *.log
+logs/
+hs_err_pid*
+*.pid
+*.seed
+*.dump
 
+# =========================
 # Archivos temporales
+# =========================
 *.tmp
 *.bak
 *.swp
 
+# =========================
 # Configuración sensible
+# =========================
 application.properties
 application.yml
 application-*.properties
 application-*.yml
 *.env
 
+# =========================
+# Maven
+# =========================
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+settings.xml
+dependency-reduced-pom.xml
+release.properties
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+
+# =========================
 # IDEs
+# =========================
 # IntelliJ IDEA
 .idea/
 *.iml
+*.iws
 /out/
 
 # Eclipse
@@ -31,12 +61,13 @@ application-*.yml
 .classpath
 .factorypath
 .settings/
+.metadata/
 
 # VS Code
 .vscode/
 
-# Maven wrapper
-.mvn/wrapper/maven-wrapper.jar
-
-# Otros
+# =========================
+# Sistema operativo
+# =========================
 .DS_Store
+Thumbs.db
