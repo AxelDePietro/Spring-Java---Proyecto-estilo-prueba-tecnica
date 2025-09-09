@@ -29,6 +29,7 @@ application-*.yml
 # Eclipse
 .project
 .classpath
+.factorypath
 .settings/
 
 # VS Code
