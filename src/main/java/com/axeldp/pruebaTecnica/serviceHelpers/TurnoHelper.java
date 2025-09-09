@@ -5,20 +5,20 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import com.axeldp.pruebaTecnica.entity.Turno;
 import com.axeldp.pruebaTecnica.entity.enums.Motor;
 import com.axeldp.pruebaTecnica.entity.enums.Rendimiento;
 import com.axeldp.pruebaTecnica.entity.enums.Tipo;
 import com.axeldp.pruebaTecnica.repository.ITurnoRepository;
 
-import lombok.RequiredArgsConstructor;
-
 @Component
-@RequiredArgsConstructor
 public class TurnoHelper {
-
-	private final ITurnoRepository turnoRepository;
+	
+	@Autowired
+	private ITurnoRepository turnoRepository;
 
 		public void insertarPrecio(Turno turno) {
 			
@@ -50,7 +50,7 @@ public class TurnoHelper {
 			turno.setPrecio(precio);;
 		}
 		
-		public boolean verificarHora(Turno turno) {
+		public boolean verificarHoraOcupada(Turno turno) {
 			for(Turno t : turnoRepository.findAll()) {
 				if(t.getHora()==turno.getHora() && t.getFecha().equals(turno.getFecha())) {
 					return true;
@@ -89,5 +89,4 @@ public class TurnoHelper {
 			}
 			return false;
 		}
-	
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.axeldp.pruebaTecnica.entity.Vehiculo;
 import com.axeldp.pruebaTecnica.exceptions.PatenteNoValida;
 import com.axeldp.pruebaTecnica.repository.IVehiculoRepository;
+import com.axeldp.pruebaTecnica.serviceHelpers.VehiculoHelper;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +18,11 @@ import lombok.RequiredArgsConstructor;
 public class VehiculoService {
 
 	private final IVehiculoRepository vehiculoRepository;
-
+	private final VehiculoHelper helper;
+	
 	public Vehiculo crearVehiculo(Vehiculo vehiculo) {
 		
-		//equals para textos literales, matches para formatos/patron de expresion xD
-		if(!vehiculo.getMatricula().matches("^[A-Z]{3}[0-9]{3}$|^[A-Z]{2}[0-9]{3}[A-Z]{2}$")) {
+		if(helper.verificarMatricula(vehiculo.getMatricula())) {
 			throw new PatenteNoValida();
 		}
 		

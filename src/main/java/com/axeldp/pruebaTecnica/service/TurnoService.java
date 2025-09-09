@@ -34,7 +34,7 @@ public class TurnoService {
 			throw new DiaCompleto(turno.getFecha()); 
 		}
 		
-		if(helper.verificarHora(turno)) {
+		if(helper.verificarHoraOcupada(turno)) {
 			throw new HorarioNoDisponible(turno.getHora());
 		}
 		
