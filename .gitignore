@@ -1,0 +1,41 @@
+# Compilados y empaquetados
+/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+
+# Configuración sensible
+application.properties
+application.yml
+application-*.properties
+application-*.yml
+*.env
+
+# IDEs
+# IntelliJ IDEA
+.idea/
+*.iml
+/out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# Otros
+.DS_Store
