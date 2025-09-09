@@ -1,9 +1,0 @@
-C:\STS_WORKSPACE\pruebaTecnica\src\main\java\com\axeldp\pruebaTecnica\controller\ClienteController.java
-C:\STS_WORKSPACE\pruebaTecnica\src\main\java\com\axeldp\pruebaTecnica\entity\Cliente.java
-C:\STS_WORKSPACE\pruebaTecnica\src\main\java\com\axeldp\pruebaTecnica\entity\Turno.java
-C:\STS_WORKSPACE\pruebaTecnica\src\main\java\com\axeldp\pruebaTecnica\entity\Vehiculo.java
-C:\STS_WORKSPACE\pruebaTecnica\src\main\java\com\axeldp\pruebaTecnica\PruebaTecnicaApplication.java
-C:\STS_WORKSPACE\pruebaTecnica\src\main\java\com\axeldp\pruebaTecnica\repository\IClienteRepository.java
-C:\STS_WORKSPACE\pruebaTecnica\src\main\java\com\axeldp\pruebaTecnica\repository\ITurnoRepository.java
-C:\STS_WORKSPACE\pruebaTecnica\src\main\java\com\axeldp\pruebaTecnica\repository\IVehiculoRepository.java
-C:\STS_WORKSPACE\pruebaTecnica\src\main\java\com\axeldp\pruebaTecnica\service\ClienteService.java

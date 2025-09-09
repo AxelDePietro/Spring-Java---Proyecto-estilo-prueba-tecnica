@@ -1,9 +1,0 @@
-com\axeldp\pruebaTecnica\repository\IVehiculoRepository.class
-com\axeldp\pruebaTecnica\repository\ITurnoRepository.class
-com\axeldp\pruebaTecnica\controller\ClienteController.class
-com\axeldp\pruebaTecnica\repository\IClienteRepository.class
-com\axeldp\pruebaTecnica\entity\Cliente.class
-com\axeldp\pruebaTecnica\PruebaTecnicaApplication.class
-com\axeldp\pruebaTecnica\service\ClienteService.class
-com\axeldp\pruebaTecnica\entity\Turno.class
-com\axeldp\pruebaTecnica\entity\Vehiculo.class
