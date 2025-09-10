@@ -1,4 +1,4 @@
-package com.axeldp.pruebaTecnica;
+package com.axeldp.pruebaTecnica.test.vehiculo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
