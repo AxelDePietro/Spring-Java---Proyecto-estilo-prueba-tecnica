@@ -82,9 +82,9 @@ public class TurnoHelper {
 			return horas.size()==11;
 		}
 		
-		public boolean verificarHoraPermitida(int hora) {
+		public boolean verificarHoraPermitida(LocalDate fecha, int hora) {
 			
-			if(hora<LocalDateTime.now().getHour()+1) {
+			if(fecha.equals(LocalDate.now()) && hora<LocalDateTime.now().getHour()+1) {
 				return true;
 			}
 			return false;

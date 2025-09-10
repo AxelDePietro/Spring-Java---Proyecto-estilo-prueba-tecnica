@@ -38,7 +38,7 @@ public class TurnoService {
 			throw new HorarioNoDisponible(turno.getHora());
 		}
 		
-		if(helper.verificarHoraPermitida(turno.getHora())) {
+		if(helper.verificarHoraPermitida(turno.getFecha(), turno.getHora())) {
 			throw new HoraNoPermitida(turno.getHora());
 		}
 		

@@ -101,8 +101,9 @@ class TurnoTest {
 	@Test
 	void verificarHoraPasada() {
 		int horaPasada = LocalDateTime.now().getHour() - 1;
+		LocalDate fechaActual = LocalDate.now();
 
-		boolean resultado = helper.verificarHoraPermitida(horaPasada);
+		boolean resultado = helper.verificarHoraPermitida(fechaActual,horaPasada);
 
 		assertTrue(resultado);
 	}
@@ -110,8 +111,9 @@ class TurnoTest {
 	@Test
 	void verificarHoraFutura() {
 		int horaFutura = LocalDateTime.now().getHour() + 1;
+		LocalDate fechaManiana = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth()+1);
 
-		boolean resultado = helper.verificarHoraPermitida(horaFutura);
+		boolean resultado = helper.verificarHoraPermitida(fechaManiana,horaFutura);
 
 		assertFalse(resultado);
 	}
