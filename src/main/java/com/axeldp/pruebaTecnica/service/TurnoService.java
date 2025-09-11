@@ -3,6 +3,7 @@ package com.axeldp.pruebaTecnica.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.axeldp.pruebaTecnica.entity.Turno;
 import com.axeldp.pruebaTecnica.exceptions.DiaCompleto;
@@ -25,6 +26,7 @@ public class TurnoService {
 	private final TurnoHelper helper;
 
 	// crear
+	@Transactional
 	public Turno crearTurno(Turno turno, int idVehiculo ) {
 		turno.setVehiculo(vehiculoRepository.findById(idVehiculo).get());
 		
@@ -63,6 +65,7 @@ public class TurnoService {
 	}
 	
 	// mostrar
+	@Transactional(readOnly = true)
 	public List<Turno> allTurnos (){
 		return turnoRepository.findAll();
 	}
@@ -76,12 +79,13 @@ public class TurnoService {
 		return turnoRepository.turnosByVehiculo(idVehiculo);
 	}
 	
+	@Transactional(readOnly = true)
 	public List<Turno> allTurnosByCliente (int idCliente){
 		return turnoRepository.findByVehiculoClienteIdCliente(idCliente);
 	}
 	
 	// eliminar
-	//@Transactional
+	@Transactional
 	public void deleteTurno (int idTurno) {
 		turnoRepository.deleteById(idTurno);
 	}

@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.axeldp.pruebaTecnica.entity.Vehiculo;
 import com.axeldp.pruebaTecnica.exceptions.PatenteNoValida;
 import com.axeldp.pruebaTecnica.repository.IVehiculoRepository;
 import com.axeldp.pruebaTecnica.serviceHelpers.VehiculoHelper;
-
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -20,6 +19,7 @@ public class VehiculoService {
 	private final IVehiculoRepository vehiculoRepository;
 	private final VehiculoHelper helper;
 	
+	@Transactional
 	public Vehiculo crearVehiculo(Vehiculo vehiculo) {
 		
 		if(helper.verificarMatricula(vehiculo.getMatricula())) {
@@ -29,6 +29,7 @@ public class VehiculoService {
 		return vehiculoRepository.save(vehiculo);
 	}
 
+	@Transactional(readOnly = true)
 	public List<Vehiculo> vehiculosPorCliente(int idCliente) {
 		
 		List<Vehiculo> vehiculosCliente = new ArrayList<>();
@@ -41,6 +42,7 @@ public class VehiculoService {
 		return vehiculosCliente;
 	}
 	
+	@Transactional(readOnly = true)
 	public List<Vehiculo> allVehiculos(){
 		return vehiculoRepository.findAll();
 	}
